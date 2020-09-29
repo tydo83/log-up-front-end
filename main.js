@@ -47,13 +47,12 @@ const password3 = 'like a BOSS';
 // from the first part of this assignment. They're
 // farther down this page.
 //
-// You can also use the two "utlitiy functions" below
+// You can also use the two "utility functions" below
 // them if you'd like!
 //
 
 // Being sure to do all that's outlined above, write
 // your code below!
-
 
 
 
