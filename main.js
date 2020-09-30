@@ -1,39 +1,39 @@
-const email1 = 'colin.jaffe@codeimmersives.com';
-const password1 = 'Hotforhimself';
-const email2 = 'mesuara@codeimmersives.com';
-const password2 = 'Console.logger';
-const email3 = 'anthony@codeimmersives.com';
-const password3 = 'like a BOSS';
+const userEmail1 = 'colin.jaffe@codeimmersives.com';
+const userPassword1 = 'Hotforhimself';
+const userEmail2 = 'mesuara@codeimmersives.com';
+const userPassword2 = 'Console.logger';
+const userEmail3 = 'anthony@codeimmersives.com';
+const userPassword3 = 'like a BOSS';
 
-// We'll be running our code as emails by typing in
+// We'll be running our code as userEmails by typing in
 // `node [path to this file]` on the command line,
-// followed by our email address and our password.
-// (Or the email and pw we want to test!)
-// We want to perform checks on that email and
-// password to arrive at one of the following messages
-// for the email:
+// followed by our userEmail address and our userPassword.
+// (Or the userEmail and pw we want to test!)
+// We want to perform checks on that userEmail and
+// userPassword to arrive at one of the following messages
+// for the userEmail:
 //
-// 1. If the email belongs to one of our registered
-// emails AND the password matches that email, tell them
+// 1. If the userEmail belongs to one of our registered
+// userEmails AND the userPassword matches that userEmail, tell them
 // that they are logged in.
 //
-// 2. If the email belongs to one of our registered
-// emails but the password does not match that email,
-// tell them their password is incorrect.
+// 2. If the userEmail belongs to one of our registered
+// userEmails but the userPassword does not match that userEmail,
+// tell them their userPassword is incorrect.
 //
-// 3. If the email does not belong to one of our
-// registered emails, and the email and password are
+// 3. If the userEmail does not belong to one of our
+// registered userEmails, and the userEmail and userPassword are
 // both valid, tell them they're signed up.
 //
-// 4. If the email does not belong to one of our
-// registered emails, and the email is not valid,
-// tell them their email is not valid. Preferably
-// also tell them what makes a valid email.
+// 4. If the userEmail does not belong to one of our
+// registered userEmails, and the userEmail is not valid,
+// tell them their userEmail is not valid. Preferably
+// also tell them what makes a valid userEmail.
 //
-// 5. If the email does not belong to one of our
-// registered emails, and the password is not valid,
-// tell them their password is not valid. Preferably
-// also tell them what makes a valid password.
+// 5. If the userEmail does not belong to one of our
+// registered userEmails, and the userPassword is not valid,
+// tell them their userPassword is not valid. Preferably
+// also tell them what makes a valid userPassword.
 //
 //
 // As long as given those inputs you get the right
@@ -54,120 +54,120 @@ const password3 = 'like a BOSS';
 // Being sure to do all that's outlined above, write
 // your code below!
 
-const email = process.argv[2];
-const password = process.argv[3];
+const userEmail = process.argv[2];
+const userPassword = process.argv[3];
 
-if(isRegisteredemail(email) && passwordMatches(email, password)) {
-  console.log("You are logged in");
+if(isRegistereduserEmail(userEmail)) {
+  if(userPasswordMatches(userEmail, userPassword)) {
+    console.log("You are logged in");
+  }
+  else {
+    console.log("Your userPassword is incorrect");
+  }
 }
-
-if(isRegisteredemail(email) && !passwordMatches(email, password)) {
-  console.log("Your password is incorrect");
-}
-
-if(!isRegisteredemail(email) && isValidEmail(email) && isValidPassword(password)) {
-  console.log("Yoy are signed up");
-}
-
-if(!isRegisteredemail(email) && !isValidEmail(email)) {
-  console.log("Your email is not valid.");
-  console.log("It has be end with codeimmersives.com");
-}
-
-if(!isRegisteredemail(email) && !isValidPassword(password)) {
-  console.log("Your password is not valid."); 
-  console.log("Your password has to have at least 8 characters and one upper and lower case");
-}
+else { 
+  if(isValiduserEmail(userEmail) && isValiduserPassword(userPassword)) {
+    console.log("Yoy are signed up");
+  }
+  else if(!isValiduserEmail(userEmail)) {
+    console.log("Your userEmail is not valid.");
+    console.log("It has to be end with codeimmersives.com");
+  }
+  else if(!isValiduserPassword(userPassword)) {
+    console.log("Your userPassword is not valid."); 
+    console.log("Your userPassword has to have at least 8 characters and one upper and lower case");
+  }
+}  
 
 // Solution to the back-end portion of this app.
 // Don't need to touch this, but you can check it out!
 
-function isValidEmail(email) {
-  return email.endsWith('@codeimmersives.com') && email.length >= 20;
+function isValiduserEmail(userEmail) {
+  return userEmail.endsWith('@codeimmersives.com') && userEmail.length >= 20;
 }
 
-function isValidPassword(password) {
-  return password.length >= 8
-    && password.toUpperCase() !== password
-    && password.toLowerCase() !== password;
+function isValiduserPassword(userPassword) {
+  return userPassword.length >= 8
+    && userPassword.toUpperCase() !== userPassword
+    && userPassword.toLowerCase() !== userPassword;
 }
 
-function isRegisteredemail(email) {
-  return email === email1 || email === email2 || email === email3;
+function isRegistereduserEmail(userEmail) {
+  return userEmail === userEmail1 || userEmail === userEmail2 || userEmail === userEmail3;
 }
 
-function passwordMatches(email, password) {
-  return email === email1 && password === password1
-    || email === email2 && password === password2
-    || email === email3 && password === password3;
+function userPasswordMatches(userEmail, userPassword) {
+  return userEmail === userEmail1 && userPassword === userPassword1
+    || userEmail === userEmail2 && userPassword === userPassword2
+    || userEmail === userEmail3 && userPassword === userPassword3;
 }
 
 // Don't touch the code below!
 // These are two utility functions that you can use if
 // you don't want to use `process.argv` directly.
 
-function getEmail() {
+function getuserEmail() {
     return process.argv[2];
 }
 
-function getPassword() {
+function getuserPassword() {
     return process.argv[3];
 }
 
 
 // Scaffolding code to make sure testing works. No need to touch this either!
 
-if (typeof isValidEmail === 'undefined') {
-  isValidEmail = undefined;
+if (typeof isValiduserEmail === 'undefined') {
+  isValiduserEmail = undefined;
 }
 
-if (typeof isValidPassword === 'undefined') {
-  isValidPassword = undefined;
+if (typeof isValiduserPassword === 'undefined') {
+  isValiduserPassword = undefined;
 }
 
-if (typeof isRegisteredemail === 'undefined') {
-  isRegisteredemail = undefined;
+if (typeof isRegistereduserEmail === 'undefined') {
+  isRegistereduserEmail = undefined;
 }
 
-if (typeof passwordMatches === 'undefined') {
-  passwordMatches = undefined;
+if (typeof userPasswordMatches === 'undefined') {
+  userPasswordMatches = undefined;
 }
 
-if (typeof email1 === 'undefined') {
-  email1 = undefined;
+if (typeof userEmail1 === 'undefined') {
+  userEmail1 = undefined;
 }
 
-if (typeof email2 === 'undefined') {
-  email2 = undefined;
+if (typeof userEmail2 === 'undefined') {
+  userEmail2 = undefined;
 }
 
-if (typeof email3 === 'undefined') {
-  email3 = undefined;
+if (typeof userEmail3 === 'undefined') {
+  userEmail3 = undefined;
 }
 
-if (typeof password1 === 'undefined') {
-  password1 = undefined;
+if (typeof userPassword1 === 'undefined') {
+  userPassword1 = undefined;
 }
 
-if (typeof password2 === 'undefined') {
-  password2 = undefined;
+if (typeof userPassword2 === 'undefined') {
+  userPassword2 = undefined;
 }
 
-if (typeof password3 === 'undefined') {
-  password3 = undefined;
+if (typeof userPassword3 === 'undefined') {
+  userPassword3 = undefined;
 }
 
 
 
 module.exports = {
-  isValidEmail,
-  isValidPassword,
-  isRegisteredemail,
-  passwordMatches,
-  email1,
-  email2,
-  email3,
-  password1,
-  password2,
-  password3,
+  isValiduserEmail,
+  isValiduserPassword,
+  isRegistereduserEmail,
+  userPasswordMatches,
+  userEmail1,
+  userEmail2,
+  userEmail3,
+  userPassword1,
+  userPassword2,
+  userPassword3,
 }
